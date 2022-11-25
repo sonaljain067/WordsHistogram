@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# About Project
+- This is a frontend application build using ReactJS. In this project, text data is fetched from an API, parsed & found the frequency of each word and then the top 20 most occuring words is plotted on histogram. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- In a button click, this application would show all the top 20 occuring words from an API with their occurences and the words which are occuring. 
 
-## Available Scripts
+# Working
+- While accessing the data, I was getting CORS error which I couldn't directly resolve from React so for that I have used [CORS Anywhere](https://github.com/Rob--W/cors-anywhere.git) which makes a proxy request to the API. The proxy server looks like `https://cryptic-headland-94862.herokuapp.com/`. 
 
-In the project directory, you can run:
+- Appending the API url to proxy URL worked and the response could be fetched in ReactJS without using any headers like `Access-Control-Allow-Origin`.
 
-### `npm start`
+- The flow of request & response is as depicted below:
+![Request & Response](./request_response.png) 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- For plotting history, I have used `react-chart-histogram` which is the Simple and easy-to-use React component to create 'canvas' histograms
 
-### `npm test`
+- The application looks like below:
+![output](./output.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/><br/>
 
-### `npm run build`
+### [Live Demo]() 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Getting Started 
+In the project directory, you can run: `npm install` to install all the dependencies and then command `npm start` to run the application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app in the development mode would be at [http://localhost:3000](http://localhost:3000).
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The page will reload when you make changes.
