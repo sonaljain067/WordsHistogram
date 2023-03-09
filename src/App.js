@@ -17,6 +17,14 @@ function App() {
 
 		splitText = contentFetched.replace(/(?:\r\n|\r|\n|\t|[,?/.()@_>]|[-]|[0-9].)/g, ' ').toLowerCase().split(" ");
 		splitText = splitText.filter(function(word) { return word.trim() !== '';})
+	    
+	    	// let splitCount = 2;
+		// // where splitCount is the number of text to be concatenated
+		// for(let i = 0; i < splitText.length; i++){
+		// 	wordsArr = [...wordsArr, {"word": splitText.splice(i,splitCount)}]
+		// }
+		// console.log(wordsArr)
+	    
 		splitText.map((word) => {
 			wordsArr = [...wordsArr, {"word": word}]
 		}) 
