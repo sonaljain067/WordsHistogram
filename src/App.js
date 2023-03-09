@@ -10,7 +10,7 @@ function App() {
     const handleClick = async() => {
 		setState({makeHistogram: false, x: [],y: []});
 
-		await fetch('https://tranquil-basin-95617.herokuapp.com/https://terriblytinytales.com/test.txt')
+		await fetch('https://cors-anywhere-deploy.netlify.app/https://terriblytinytales.com/test.txt')
 		.then(response => response.text())
 		.then((text) => contentFetched = text)
 		.catch(err => console.log("err: ", err))
