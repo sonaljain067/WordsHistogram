@@ -34,25 +34,30 @@ function App() {
 		splitText = splitText.filter(function(word) { return word.trim() !== '';})
 
 		// character mapping 
-		splitText.map((word) => {
+		splitText.map((word) => (
 			wordsArr = [...wordsArr, {"word": word}]
-		}) 
+		)) 
 		
 		// characters count 
-		result = wordsArr.reduce( (acc, o) => (acc[o.word] = (acc[o.word] || 0) + 1, acc), {} );
-		
-		Object.entries(result).map((item) => {
+		result = wordsArr.reduce((acc, o) => {
+			acc[o.word] = (acc[o.word] = acc[o.word] || 0) + 1;
+			return acc; 
+		}, {}); 
+		Object.entries(result).map((item) => (
 			arr2 = [...arr2, {"word": item[0], "count": item[1]}]
-		})
+		))
 		arr2.sort((a,b) => b.count - a.count)
 
 		// character extraction as per user input 	
 		topFreqData = arr2.slice(0,numOccurences);
 
 		// x & y label update 
-		topFreqData.map((item) => {
-			xLabel.push(item.word); yLabel.push(item.count);
-		})
+		topFreqData.map((item) => (
+			xLabel.push(item.word)
+		))
+		topFreqData.map((item) => (
+			yLabel.push(item.count) 
+		))
 
 		// state set 
 		setState({makeHistogram: true, x: xLabel, y: yLabel});
