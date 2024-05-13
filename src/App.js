@@ -62,7 +62,7 @@ function App() {
   return ( 
     <div id = "App">
 		<h1>Word Histogram</h1>
-		<h4>Find words occurences of <a href="https://terriblytinytales.com/test.txt" target="_blank">file</a></h4>
+		<h4>Find words occurences of <a href="https://terriblytinytales.com/test.txt" target="_blank" rel="noreferrer">file</a></h4>
 		<div id="user__input">
 			<p id="app__text">Find top occurences of <input type="text" id="input__text"/> characters</p>
 		</div>
