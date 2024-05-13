@@ -1,8 +1,8 @@
-.App {
+#App {
   text-align: center;
 }
 
-button{
+#submit__btn{
   background-color: black;
   color: white;
   font-size: 20px;
@@ -11,6 +11,14 @@ button{
   margin: 2rem;
   cursor: pointer;
 }
-.histSection{
+
+#histSection{
   margin: -2rem;
+}
+
+#input__text{
+  width: 4rem; 
+  text-align: center;
+  border: 1px solid #e0dede; 
+  outline: none; 
 }

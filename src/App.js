@@ -3,32 +3,42 @@ import React, { useState } from 'react';
 import Histogram from 'react-chart-histogram';
 
 function App() {
+	// defining state 
 	const [state, setState] = useState({makeHistogram: false, x: [], y: []});
 
+	// variable initiation 
 	let contentFetched, splitText, result, wordsArr = [], xLabel = [], yLabel = [], arr2 = [], topFreqData;
-  	const options = { fillColor: 'skyblue', strokeColor: 'skyblue' };
-    const handleClick = async() => {
-		setState({makeHistogram: false, x: [],y: []});
 
-		await fetch('https://cors-anywhere-deploy.up.railway.app/https://terriblytinytales.com/test.txt')
+	// histogram color set 
+  	const options = { fillColor: 'skyblue', strokeColor: 'skyblue' };
+	
+    const handleClick = async() => {
+		// number occurences input check 
+		let numOccurences = 20 
+		let numOccurenceInput =  document.getElementById("input__text")
+		if(numOccurenceInput.value) {
+			numOccurences = numOccurenceInput.value
+		}
+		
+		// state definition 
+		setState({makeHistogram: false, x: [],y: []});
+		
+		// fetching plain text 
+		await fetch('https://terriblytinytales.com/test.txt')
 		.then(response => response.text())
 		.then((text) => contentFetched = text)
 		.catch(err => console.log("err: ", err))
 
+		// text extraction 
 		splitText = contentFetched.replace(/(?:\r\n|\r|\n|\t|[,?/.()@_>]|[-]|[0-9].)/g, ' ').toLowerCase().split(" ");
 		splitText = splitText.filter(function(word) { return word.trim() !== '';})
-	    
-	    	// let splitCount = 2;
-		// // where splitCount is the number of text to be concatenated
-		// for(let i = 0; i < splitText.length; i++){
-		// 	wordsArr = [...wordsArr, {"word": splitText.splice(i,splitCount)}]
-		// }
-		// console.log(wordsArr)
-	    
+
+		// character mapping 
 		splitText.map((word) => {
 			wordsArr = [...wordsArr, {"word": word}]
 		}) 
 		
+		// characters count 
 		result = wordsArr.reduce( (acc, o) => (acc[o.word] = (acc[o.word] || 0) + 1, acc), {} );
 		
 		Object.entries(result).map((item) => {
@@ -36,31 +46,42 @@ function App() {
 		})
 		arr2.sort((a,b) => b.count - a.count)
 
-		topFreqData = arr2.slice(0,20);
+		// character extraction as per user input 	
+		topFreqData = arr2.slice(0,numOccurences);
 
+		// x & y label update 
 		topFreqData.map((item) => {
 			xLabel.push(item.word); yLabel.push(item.count);
 		})
-		
+
+		// state set 
 		setState({makeHistogram: true, x: xLabel, y: yLabel});
 	}
 	
 	
   return ( 
-    <div className = "App">
-		<h1></h1>
-		<button onClick = {handleClick} className="submit-btn">Submit 🚀</button>
-		<div className='histSection'>
+    <div id = "App">
+		<h1>Word Histogram</h1>
+		<h4>Find words occurences of <a href="https://terriblytinytales.com/test.txt" target="_blank">file</a></h4>
+		<div id="user__input">
+			<p id="app__text">Find top occurences of <input type="text" id="input__text"/> characters</p>
+		</div>
+		<button 
+			onClick = {handleClick} 
+			id ="submit__btn">
+				Submit 🚀
+		</button>
+		<div id='histSection'>
 			{state.makeHistogram ? <>
-			<Histogram 
-			xLabels={state.x}
-			yValues={state.y}
-			className = "histogram"
-			width='1601'
-			height='550'
-			options={options} />
-		</>
-		: null}
+				<Histogram 
+					xLabels={state.x}
+					yValues={state.y}
+					id = "histogram"
+					width='1600rem'
+					height='550'
+					options={options} />
+				</>
+			: null}
 		</div>
     </div>
   );
